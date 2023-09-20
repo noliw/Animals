@@ -1,7 +1,14 @@
 fun main(args: Array<String>) {
-    println("Hello World!")
+    val animals = arrayOf(Hippo(), Wolf())
+    for (animal in animals) {
+        animal.roam()
+        animal.eat()
+    }
+    val vet = Vet()
+    val wolf = Wolf()
+    val hippo = Hippo()
 
-    // Try adding program arguments via Run/Debug configuration.
-    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-    println("Program arguments: ${args.joinToString()}")
+    vet.giveShot(wolf)
+    vet.giveShot(hippo)
+
 }
