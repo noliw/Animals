@@ -1,5 +1,5 @@
 // if you mark a property or a member function as abstract, we must make the class abstract too
-abstract class Animal {
+abstract class Animal: Roamable {
     // marking a property as abstract is telling the compiler that there's no useful code you can write in the body
     // because this property is always overriden by concrete instances
     abstract val image: String
@@ -11,7 +11,7 @@ abstract class Animal {
 
     abstract fun eat()
 
-    open fun roam() {
+    override fun roam() {
         println("The animal is roaming")
     }
 
@@ -67,3 +67,17 @@ class Vet {
     }
 }
 
+// an interface lets you define common behavior outside a superclass hierarchy
+// both interfaces and abstract classes can't be instantiated
+// a class can have multiple interfaces, but can only inherit from a single direct superclass
+// interfaces are more flexible than abstract classes
+
+interface Roamable {
+    fun roam()
+}
+
+class Vehicle: Roamable {
+    override fun roam(){
+        println("The vehicle is roamning")
+    }
+}
