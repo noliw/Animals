@@ -1,16 +1,15 @@
-open class Animal {
-    open val image = ""
-    open val food = ""
-    open val habitat = ""
+// if you mark a property or a member function as abstract, we must make the class abstract too
+abstract class Animal {
+    // marking a property as abstract is telling the compiler that there's no useful code you can write in the body
+    // because this property is always overriden by concrete instances
+    abstract val image: String
+    abstract val food: String
+    abstract val habitat: String
     val hunger = 10
 
-    open fun makeNoise() {
-        println("The Animal is making a noise")
-    }
+    abstract fun makeNoise()
 
-    open fun eat() {
-        println("The Animal is eating")
-    }
+    abstract fun eat()
 
     open fun roam() {
         println("The animal is roaming")
@@ -28,6 +27,7 @@ open class Animal {
 // Even if we didn't manually add a constructor to the animal class, the compiler will automatically create an empty
 // constructor when the code gets compiled
 // prefix property with final if you want to stop it from being overridden further down the class hierarchy
+// We must implement all the abstract properties and functions every concrete
 class Hippo : Animal() {
     override val image = "hippo.jpg"
     override val food = "grass"
@@ -41,8 +41,7 @@ class Hippo : Animal() {
         println("The Hippo is eating $food")
     }
 }
-
-open class Canine : Animal() {
+abstract class Canine : Animal() {
     override fun roam() {
         println("The Canine is roaming")
     }
@@ -67,3 +66,4 @@ class Vet {
         animal.makeNoise()
     }
 }
+
